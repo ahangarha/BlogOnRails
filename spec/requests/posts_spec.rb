@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Posts", type: :request do
-  describe "GET /index" do
-    before(:example) { get '/users/1/posts'}
+RSpec.describe 'Posts', type: :request do
+  describe 'GET /index' do
+    before(:example) { get '/users/1/posts' }
     it 'respond with 200 code' do
       expect(response).to have_http_status(:ok)
     end
@@ -16,8 +16,8 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
-  describe "GET /show" do
-    before(:example) { get '/users/1/posts/2'}
+  describe 'GET /show' do
+    before(:example) { get '/users/1/posts/2' }
     it 'respond with 200 code' do
       expect(response).to have_http_status(:ok)
     end
