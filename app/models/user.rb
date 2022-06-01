@@ -4,6 +4,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def recent_3_posts
-    self.posts.limit(3)
+    posts.limit(3)
   end
 end
