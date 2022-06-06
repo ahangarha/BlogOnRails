@@ -1,2 +1,32 @@
-<h1>Specific post of a user</h1>
-<p>One speific post of the given user renders here!</p>
+<h1><%= @post.title %></h1>
+<div><em>
+  by
+  <%= link_to user_path(@post.user) do %>
+    <%= @post.user.name-%>
+  <% end %>
+  |
+  <span><%= @post.likes_counter || 0 %> Likes</span>
+    |
+    <span><%= @post.comments_counter || 0 %> Comments</span>
+</em></div>
+<p><%= @post.text %></p>
+
+<hr />
+
+<div class="comments-wrapper">
+  <h3>Comments:</h3>
+  <% if @post.comments.empty? %>
+    <p>There no comment so far!</p>
+  <% end %>
+  <% @post.comments.each do |comment| %>
+    <div class="comment-card">
+      <strong>
+        <%= link_to user_path(comment.user) do %>
+          <%= comment.user.name %>
+        <% end %>
+        :
+      </strong>
+      <%= comment.text %>
+    </div>
+  <% end %>
+</div>

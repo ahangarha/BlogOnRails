@@ -1,2 +1,5 @@
-<h1>Posts of a given user</h1>
-<p>All of the posts made by the given user get listed here</p>
+<%= render partial: 'users/user_card', locals: {user: @posts.first.user} %>
+
+<% @posts.each do |post| %>
+  <%= render partial: 'post_card', locals: { post: post, comments: post.recent_five_comments} %>
+<% end %>
