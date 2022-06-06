@@ -1,2 +1,13 @@
 <h1>User Details</h1>
-<p>Details related to the specific user renders here!</p>
+<%= render partial: "user_card", locals: { user: @user } %>
+<%= render partial: "bio_card", locals: { user: @user } %>
+
+<h2>Last three posts:</h2>
+
+<div class="card-list">
+  <% @recent_posts.each do |post| %>
+    <%= render partial: "posts/post_card", locals: { post: post } %>
+  <% end %>
+</div>
+
+<%= link_to "See all posts", user_posts_path(@user) if @user.posts_counter > 0 %>
