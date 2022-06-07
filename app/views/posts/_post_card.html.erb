@@ -4,7 +4,7 @@
   <% end %>
   <p><%= post.text.length > 100 ? post.text.first(100) + '...' : post.text %></p>
   <div class="post-card-meta">
-    <span><%= post.likes_counter || 0 %> Likes</span>
+    <%= render partial: "likes/like_button", locals: { like: Like.new, user: post.user, post: post } %>
     |
     <span><%= post.comments_counter || 0 %> Comments</span>
   </div>
