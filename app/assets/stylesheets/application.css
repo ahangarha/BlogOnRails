@@ -23,6 +23,7 @@
 body {
   background: #f7f7f7;
   padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -104,4 +105,15 @@ main {
   padding: 0.5rem;
   box-shadow: 2px 2px 2px #0001;
   border-radius: 0.5rem;
+}
+
+.inline {
+  display: inline;
+}
+
+.like-button {
+  border: 0;
+  background: none;
+  font-size: inherit;
+  cursor: pointer;
 }

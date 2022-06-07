@@ -3,6 +3,7 @@ class Like < ApplicationRecord
   belongs_to :post
 
   after_save :update_counter
+  after_destroy :update_counter
 
   def update_counter
     post.update(
