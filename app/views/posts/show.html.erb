@@ -29,4 +29,7 @@
       <%= comment.text %>
     </div>
   <% end %>
+
+  <h3>Add new comment:</h3>
+  <%= render partial: "comments/comment_form", locals: { comment: Comment.new, user: @post.user, post: @post } %>
 </div>
