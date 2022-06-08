@@ -74,4 +74,30 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  context 'post.recent_five_comments' do
+    it 'returns empty list if there is no comments' do
+      expect(the_post.recent_five_comments).to eq []
+    end
+
+    it 'returns recent five comments in right order' do
+      Comment.create!(user: the_author, post: the_post, text: 'c1')
+      comment2 = Comment.create!(user: the_author, post: the_post, text: 'c2')
+      comment3 = Comment.create!(user: the_author, post: the_post, text: 'c3')
+      comment4 = Comment.create!(user: the_author, post: the_post, text: 'c4')
+      comment5 = Comment.create!(user: the_author, post: the_post, text: 'c5')
+      comment6 = Comment.create!(user: the_author, post: the_post, text: 'c6')
+
+      the_post.reload
+      actual_comments = the_post.recent_five_comments.pluck(:text)
+      expected_comments = [
+        comment6.text,
+        comment5.text,
+        comment4.text,
+        comment3.text,
+        comment2.text
+      ]
+      expect(actual_comments).to eq expected_comments
+    end
+  end
 end
