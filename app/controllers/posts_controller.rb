@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.where(user: params[:user_id])
+    @posts = Post.includes(:user).where(user: params[:user_id])
   end
 
   def create
@@ -24,6 +24,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:user, comments: [:user]).find(params[:id])
   end
 end

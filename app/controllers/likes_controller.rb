@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.includes(:user).find(params[:post_id])
     @post_author = @post.user
 
     @the_user = current_user
