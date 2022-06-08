@@ -15,24 +15,26 @@ RSpec.describe Post, type: :model do
     likes_counter: 0
   )
 
-  it 'must have title' do
-    the_post.title = nil
-    expect(the_post).to_not be_valid
-  end
+  context 'post.title' do
+    it 'has some value' do
+      the_post.title = nil
+      expect(the_post).to_not be_valid
+    end
 
-  it 'must have a non-blank title' do
-    the_post.title = '    '
-    expect(the_post).to_not be_valid
-  end
+    it 'is not blank' do
+      the_post.title = '    '
+      expect(the_post).to_not be_valid
+    end
 
-  it 'cannot have title longer than 250 characters' do
-    the_post.title = 'a' * 251
-    expect(the_post).to_not be_valid
-  end
+    it 'cannot be longer than 250 characters' do
+      the_post.title = 'a' * 251
+      expect(the_post).to_not be_valid
+    end
 
-  it 'accepts "The post title" as title' do
-    the_post.title = 'The post title'
-    expect(the_post).to be_valid
+    it 'accepts "The post title"' do
+      the_post.title = 'The post title'
+      expect(the_post).to be_valid
+    end
   end
 
   context 'post.comments_counter' do
