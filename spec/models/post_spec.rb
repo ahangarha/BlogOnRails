@@ -53,4 +53,23 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  context 'post.likes_counter' do
+    it 'has some value' do
+      the_post.likes_counter = nil
+      expect(the_post).to_not be_valid
+    end
+
+    it 'is integer' do
+      the_post.likes_counter = 1.2
+      expect(the_post).to_not be_valid
+    end
+
+    it 'accpets 0 and 10' do
+      [0, 10].each do |counter|
+        the_post.likes_counter = counter
+        expect(the_post).to be_valid
+      end
+    end
+  end
 end
