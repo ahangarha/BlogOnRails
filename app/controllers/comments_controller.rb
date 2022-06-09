@@ -10,6 +10,9 @@ class CommentsController < ApplicationController
     new_comment.post = post
     new_comment.user = comment_author
 
-    redirect_to user_post_url(post_author, post) if new_comment.save
+    return unless new_comment.save
+
+    flash[:notice] = 'You commented.'
+    redirect_to user_post_url(post_author, post)
   end
 end
