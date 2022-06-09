@@ -1,19 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  the_author = User.create!(
-    name: 'Omid',
-    photo: 'https://via.placeholder.com/150',
-    bio: 'Some text as bio!',
-    posts_counter: 0
-  )
-  the_post = Post.new(
-    user: the_author,
-    title: 'The post title',
-    text: 'the body of the post',
-    comments_counter: 0,
-    likes_counter: 0
-  )
+  let(:the_author) { User.create!(name: 'Omid', photo: 'https://via.placeholder.com/150', bio: 'Some text as bio!', posts_counter: 0) }
+  let(:the_post) do
+    Post.new(
+      user: the_author,
+      title: 'The post title', text: 'the body of the post',
+      comments_counter: 0, likes_counter: 0
+    )
+  end
+  let(:comment2) { Comment.new(user: the_author, post: the_post, text: 'c1') }
+  let(:comment2) { Comment.new(user: the_author, post: the_post, text: 'c2') }
+  let(:comment3) { Comment.new(user: the_author, post: the_post, text: 'c3') }
+  let(:comment4) { Comment.new(user: the_author, post: the_post, text: 'c4') }
+  let(:comment5) { Comment.new(user: the_author, post: the_post, text: 'c5') }
+  let(:comment6) { Comment.new(user: the_author, post: the_post, text: 'c6') }
 
   context 'post.title' do
     it 'has some value' do
@@ -81,12 +82,12 @@ RSpec.describe Post, type: :model do
     end
 
     it 'returns recent five comments in right order' do
-      Comment.create!(user: the_author, post: the_post, text: 'c1')
-      comment2 = Comment.create!(user: the_author, post: the_post, text: 'c2')
-      comment3 = Comment.create!(user: the_author, post: the_post, text: 'c3')
-      comment4 = Comment.create!(user: the_author, post: the_post, text: 'c4')
-      comment5 = Comment.create!(user: the_author, post: the_post, text: 'c5')
-      comment6 = Comment.create!(user: the_author, post: the_post, text: 'c6')
+      comment2.save!
+      comment2.save!
+      comment3.save!
+      comment4.save!
+      comment5.save!
+      comment6.save!
 
       the_post.reload
       actual_comments = the_post.recent_five_comments.pluck(:text)

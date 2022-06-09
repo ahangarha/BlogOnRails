@@ -45,11 +45,11 @@ RSpec.describe User, type: :model do
   end
 
   context 'recent_3_posts method' do
-    the_author = User.create!(name: 'Omid', photo: 'https://via.placeholder.com/150', bio: 'bio!', posts_counter: 0)
-    post1 = Post.new(title: 'post 1', user: the_author, text: 't', comments_counter: 0, likes_counter: 0)
-    post2 = Post.new(title: 'post 2', user: the_author, text: 't', comments_counter: 0, likes_counter: 0)
-    post3 = Post.new(title: 'post 3', user: the_author, text: 't', comments_counter: 0, likes_counter: 0)
-    post4 = Post.new(title: 'post 4', user: the_author, text: 't', comments_counter: 0, likes_counter: 0)
+    let(:the_author) { User.create!(name: 'Omid', photo: 'https://via.placeholder.com/150', bio: 'bio!', posts_counter: 0) }
+    let(:post1) { Post.new(title: 'post 1', user: the_author, text: 't', comments_counter: 0, likes_counter: 0) }
+    let(:post2) { Post.new(title: 'post 2', user: the_author, text: 't', comments_counter: 0, likes_counter: 0) }
+    let(:post3) { Post.new(title: 'post 3', user: the_author, text: 't', comments_counter: 0, likes_counter: 0) }
+    let(:post4) { Post.new(title: 'post 4', user: the_author, text: 't', comments_counter: 0, likes_counter: 0) }
 
     it 'returns nothing without any posts' do
       posts_count = the_author.recent_3_posts.count
