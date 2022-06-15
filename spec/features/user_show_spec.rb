@@ -35,7 +35,7 @@ describe 'User Show', type: :feature do
   end
 
   it 'gets redirected to post page after user clicks on a post' do
-    click_link "Post 1"
+    click_link 'Post 1'
 
     expect(page).to have_current_path(user_post_path(@user, @user.posts.second))
   end
