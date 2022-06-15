@@ -41,6 +41,17 @@ You need Ruby v3+, Rails v7+ and Postgresql installed on your machine.
 [![Linkedin](https://img.shields.io/badge/-ahangarha-555?style=flat-square&logo=Linkedin&logoColor=eee&labelColor=blue)](https://www.linkedin.com/in/ahangarha/)
 [![GitHub](https://img.shields.io/badge/-ahangarha-555?style=flat-square&logo=GitHub&logoColor=eee&labelColor=000)](https://www.github.com/ahangarha/)
 
+👤 **Soufiane Boursen**
+
+- GitHub: [@Sboursen](https://github.com/Sboursen)
+- Twitter: [@sboursen_dev](https://twitter.com/sboursen_dev)
+- LinkedIn: [@sboursen](https://linkedin.com/in/sboursen)
+
+👤 **Awais Amjed**
+
+- GitHub: [@awais-amjed](https://github.com/awais-amjed)
+- LinkedIn: [@awais-amjed](https://www.linkedin.com/in/awais-amjed/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
