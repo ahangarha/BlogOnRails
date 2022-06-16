@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.includes(:user).where(user: params[:user_id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
   end
 
   def create
