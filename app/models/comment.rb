@@ -4,8 +4,8 @@ class Comment < ApplicationRecord
 
   after_save :update_counter
 
-  def as_json(options={})
-    { author: user.name, comment: text }
+  def as_json(_)
+    super(except: %i[updated_at created_at])
   end
 
   def update_counter

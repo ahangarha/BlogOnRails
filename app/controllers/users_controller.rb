@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @recent_posts = @user.recent_3_posts
     respond_to do |format|
       format.html
-      format.json { render json: @recent_posts }
+      format.json { render json: @user }
     end
   end
 end

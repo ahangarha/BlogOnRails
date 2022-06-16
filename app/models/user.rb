@@ -13,6 +13,10 @@ class User < ApplicationRecord
     greater_than_or_equal_to: 0
   }
 
+  def as_json(_)
+    super(only: %i[id name bio photo posts_counter])
+  end
+
   def recent_3_posts
     posts.includes(:user).order(created_at: :DESC).limit(3)
   end
