@@ -19,7 +19,14 @@ class CommentsController < ApplicationController
 
     return unless new_comment.save
 
-    flash[:notice] = 'You commented.'
-    redirect_to user_post_url(post_author, post)
+    respond_to do |format|
+      format.html do
+        flash[:notice] = 'You commented.'
+        redirect_to user_post_url(post_author, post)
+      end
+      format.json do
+        render json: new_comment
+      end
+    end
   end
 end

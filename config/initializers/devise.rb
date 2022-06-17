@@ -314,6 +314,6 @@ Devise.setup do |config|
     jwt.dispatch_requests = [
       ['POST', %r{^/sign_in$}]
     ]
-    jwt.expiration_time = 5.minutes.to_i
+    jwt.expiration_time = 5.days.to_i
   end
 end

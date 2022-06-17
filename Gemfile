@@ -81,4 +81,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "devise-jwt", "~> 0.9.0"
+gem 'devise-jwt', '~> 0.9.0'
