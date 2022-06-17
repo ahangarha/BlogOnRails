@@ -1,4 +1,11 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    post = Post.find(params[:post_id])
+    render json: post.comments
+  end
+
   def create
     comment_author = current_user
     post = Post.find(params[:post_id])
@@ -12,7 +19,14 @@ class CommentsController < ApplicationController
 
     return unless new_comment.save
 
-    flash[:notice] = 'You commented.'
-    redirect_to user_post_url(post_author, post)
+    respond_to do |format|
+      format.html do
+        flash[:notice] = 'You commented.'
+        redirect_to user_post_url(post_author, post)
+      end
+      format.json do
+        render json: new_comment
+      end
+    end
   end
 end
